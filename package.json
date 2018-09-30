@@ -12,7 +12,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production npx parcel watch src/index.js -d public/js/ --no-cache",
-    "postinstall": "npm run build",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",

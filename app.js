@@ -1,0 +1,56 @@
+/**
+ * app.js
+ */
+const express = require('express');
+const path = require('path');
+const dotenv = require('dotenv'); // <-- import app
+const logger = require('morgan'); // <-- import app
+const bodyParser = require('body-parser'); // <-- import app
+const cookieParser = require('cookie-parser'); // <-- import app
+const routes = require('./routes/'); // <-- import app
+
+// use dotenv
+dotenv.config({
+  silent: true,
+});
+
+// Express app setup
+const app = express();
+
+// view engine
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'pug');
+
+// logger
+app.use(logger('combined'));
+
+// body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// cookie parser
+app.use(cookieParser());
+
+// serve static files from 'public'
+app.use(express.static(path.join(__dirname, './public')));
+
+// use routes
+app.use('/', routes); // <--- error 404 handler comes after this
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handlers
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: app.get('env') === 'development' ? err : {},
+  });
+  next();
+});
+
+module.exports = app;

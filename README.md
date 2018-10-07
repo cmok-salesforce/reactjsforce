@@ -6,3 +6,5 @@
 * [Best practices for Express app structure](https://www.terlici.com/2014/08/25/best-practices-express-structure.html)
 * [Playground demo](https://github.com/mmurph23/sf-connect-dev)
 * [Creating customizable dashboards on top of Salesforce via API](https://github.com/mmurph23/salesforce-dashboard)
+* [Meteor Intermediate with ReactJS](https://github.com/meteor/intermediate-example)
+* [Meteor Intermediate with ReactJS Youtube](https://www.youtube.com/playlist?list=PLLnpHn493BHFYZUSK62aVycgcAouqBt7V)
